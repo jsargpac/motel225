@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modèle Économique - Motel225</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- Palette Name: Brilliant Blues -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            color: #001219;
+        }
+        .header-bg {
+            background-color: #001219;
+        }
+        .text-accent {
+            color: #e9d8a6;
+        }
+        .text-primary {
+            color: #005f73;
+        }
+        .text-secondary {
+            color: #0a9396;
+        }
+        .bg-card {
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+        }
+        .kpi-card {
+            background: linear-gradient(135deg, #005f73 0%, #003a47 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        .kpi-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #e9d8a6;
+        }
+        .kpi-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            color: #94d2bd;
+        }
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 350px;
+            width: 100%;
+            max-width: 600px;
+        }
+        .horizontal-chart-container {
+            position: relative;
+            margin: auto;
+            height: 450px;
+            width: 100%;
+            max-width: 800px;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+            }
+            .horizontal-chart-container {
+                height: 400px;
+            }
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #005f73;
+        }
+        .section-subtitle {
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            font-size: 1.125rem;
+            color: #334155;
+            margin-bottom: 3rem;
+        }
+        .staff-grid-item {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+        .staff-grid-item:hover {
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-bg text-white p-6 md:p-8 shadow-lg">
+        <nav class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <h1 class="text-3xl font-black text-accent mb-4 md:mb-0">Motel225</h1>
+            <ul class="flex space-x-6 md:space-x-8 text-lg font-semibold">
+                <li><a href="index.html" class="text-white hover:text-accent transition-colors duration-300">Accueil</a></li>
+                <li><a href="modele-economique.html" class="text-white hover:text-accent transition-colors duration-300">Modèle Économique</a></li>
+                <li><a href="couts-construction.html" class="text-white hover:text-accent transition-colors duration-300">Coûts de Construction</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+	
+	        <section id="hero" class="text-center my-16">
+            <h2 class="text-4xl md:text-5xl font-black text-primary leading-tight mb-6">Modèle économique d'un motel</h2>
+        </section>
+
+        <section id="revenues" class="my-16 bg-card p-8">
+            <h2 class="section-title">Chiffre d'affaire annuel projeté</h2>
+            <p class="section-subtitle">Notre modèle de revenus est conçu pour une diversification maximale, avec un chiffre d'affaires annuel total estimé à <strong>127.7 millions FCFA</strong> par motel.</p>
+            <div class="chart-container mx-auto">
+                <canvas id="revenueChart"></canvas>
+            </div>
+            <p class="text-center mt-6 text-sm text-gray-600 max-w-2xl mx-auto">Le chiffre d'affaires des chambres est le moteur principal, complété efficacement par les revenus des boissons (chambres et lobby) et les paniers-repas, assurant une source de revenus diversifiée et résiliente.</p>
+        </section>
+        
+        <section id="expenses" class="my-16">
+            <h2 class="section-title">Structure détaillée des charges opérationnelles</h2>
+            <p class="section-subtitle">Une gestion des coûts optimisée pour une efficacité maximale. Les charges opérationnelles annuelles totalisent environ <strong>67.1 millions FCFA</strong> par motel.</p>
+            <div class="bg-card p-8">
+                <div class="horizontal-chart-container">
+                    <canvas id="expensesChart"></canvas>
+                </div>
+                <p class="text-center mt-6 text-sm text-gray-600 max-w-2xl mx-auto">Ce graphique présente les principaux postes de dépenses. La masse salariale représente l'investissement clé dans un service de qualité. Les charges variables (petit-déjeuner, électricité chambres, blanchisserie) sont directement liées à l'occupation. Les charges fixes (électricité communs, climatisation communs, internet & télécoms, eau, électricité cuisine et logistique) couvrent l'infrastructure et le fonctionnement de base du motel.</p>
+            </div>
+        </section>
+        
+        <section id="ebitda" class="my-16">
+            <h2 class="section-title">Un EBITDA et un résultat net solides</h2>
+			
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="kpi-card">
+                    <div class="kpi-value">60.6M</div>
+                    <div class="kpi-label">EBITDA annuel cible</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-value">47.4%</div>
+                    <div class="kpi-label">Marge d'EBITDA</div>
+                </div>
+                <div class="kpi-card md:col-span-2 lg:col-span-1">
+                    <div class="kpi-value">9.4M</div>
+                    <div class="kpi-label">Amortissement annuel</div>
+                </div>
+                <div class="kpi-card md:col-span-2 lg:col-span-1">
+                    <div class="kpi-value">26M</div>
+                    <div class="kpi-label">Remboursement emprunt (100M de principal sur 5 ans)</div>
+                </div>
+                <div class="kpi-card md:col-span-2 lg:col-span-1">
+                    <div class="kpi-value">25.2M</div>
+                    <div class="kpi-label">Résultat Net annuel cible</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-value">19.72%</div>
+                    <div class="kpi-label">Marge Nette</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="staffing" class="my-16 bg-card p-8">
+            <h2 class="section-title">L'équipe opérationnelle du motel</h2>
+            <p class="section-subtitle">Une équipe dédiée et qualifiée est essentielle au succès de chaque Motel225, assurant un service de haute qualité et une gestion efficace au quotidien.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div class="staff-grid-item">
+                    <div class="text-4xl font-bold text-[#005f73]">1</div>
+                    <div class="text-lg font-semibold mt-2">Gérant</div>
+                    <p class="text-sm text-gray-600">Supervise toutes les opérations du motel.</p>
+                </div>
+                <div class="staff-grid-item">
+                    <div class="text-4xl font-bold text-[#0a9396]">2</div>
+                    <div class="text-lg font-semibold mt-2">Réceptionnistes</div>
+                    <p class="text-sm text-gray-600">Assurent l'accueil et le service client 24/7.</p>
+                </div>
+                <div class="staff-grid-item">
+                    <div class="text-4xl font-bold text-[#94d2bd]">3</div>
+                    <div class="text-lg font-semibold mt-2">Agents de Ménage</div>
+                    <p class="text-sm text-gray-600">Garantissent la propreté et l'hygiène des chambres et espaces communs.</p>
+                </div>
+                <div class="staff-grid-item">
+                    <div class="text-4xl font-bold text-[#e9d8a6]">3</div>
+                    <div class="text-lg font-semibold mt-2">Gardiens</div>
+                    <p class="text-sm text-gray-600">Veillent à la sécurité du site et des clients jour et nuit.</p>
+                </div>
+                <div class="staff-grid-item">
+                    <div class="text-4xl font-bold text-[#ee9b00]">2</div>
+                    <div class="text-lg font-semibold mt-2">Agents de Service</div>
+                    <p class="text-sm text-gray-600">Chargés du petit-déjeuner et du service des boissons.</p>
+                </div>
+                <div class="staff-grid-item">
+                    <div class="text-4xl font-bold text-[#ca6702]">2</div>
+                    <div class="text-lg font-semibold mt-2">Personnel de Cuisine</div>
+                    <p class="text-sm text-gray-600">Préparent les repas et gèrent la cuisine.</p>
+                </div>
+                 <div class="staff-grid-item md:col-span-2 lg:col-span-3">
+                    <div class="text-xl font-bold text-[#001219]">1</div>
+                    <div class="text-lg font-semibold mt-2">Divers / Support Administratif</div>
+                    <p class="text-sm text-gray-600">Soutien polyvalent pour les tâches administratives et logistiques.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="profitability" class="my-16 bg-card p-8">
+            <h2 class="section-title">Indicateurs clés de rentabilité</h2>
+            <p class="section-subtitle">Les projections financières démontrent une rentabilité solide, validant la pertinence de notre business model.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="kpi-card">
+                    <div class="kpi-value">60.6M</div>
+                    <div class="kpi-label">EBITDA annuel cible</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-value">47.4%</div>
+                    <div class="kpi-label">Marge d'EBITDA</div>
+                </div>
+                <div class="kpi-card md:col-span-2 lg:col-span-1">
+                    <div class="kpi-value">25.2M</div>
+                    <div class="kpi-label">Résultat Net annuel cible</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-value">19.7%</div>
+                    <div class="kpi-label">Marge Nette</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-value">11.1%</div>
+                    <div class="kpi-label">ROCE Projeté</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="text-3xl font-bold text-white">Modèle Équilibré</div>
+                    <p class="mt-4 text-gray-300">Conçu pour une performance opérationnelle et un retour sur investissement attractifs.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="header-bg text-white p-8 text-center mt-16">
+        <p class="text-lg">&copy; 2025 Motel225. Tous droits réservés.</p>
+        <p class="text-sm mt-2">Pour plus d'informations, contactez-nous : [Votre Contact Email] | [Votre Numéro de Téléphone]</p>
+    </footer>
+
+    <script>
+        function wrapText(str, maxWidth) {
+            if (typeof str !== 'string' || str.length <= maxWidth) {
+                return str;
+            }
+            const words = str.split(' ');
+            let lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                const word = words[i];
+                if ((currentLine + ' ' + word).length > maxWidth) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine += ' ' + word;
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+
+        const chartColors = {
+            primary: '#005f73',
+            secondary: '#0a9396',
+            tertiary: '#94d2bd',
+            quaternary: '#e9d8a6',
+            quinary: '#ee9b00',
+            senary: '#ca6702',
+            textPrimary: '#001219',
+            bgLight: '#f8f9fa'
+        };
+
+        const revenueData = {
+            labels: ['Chambres', wrapText('Boissons (Chambres & Lobby)', 16), wrapText('Paniers-Repas', 16)],
+            datasets: [{
+                data: [109500000, 16320000, 1872000],
+                backgroundColor: [chartColors.primary, chartColors.secondary, chartColors.tertiary],
+                borderColor: '#ffffff',
+                borderWidth: 3,
+                hoverOffset: 4
+            }]
+        };
+
+        new Chart(document.getElementById('revenueChart'), {
+            type: 'doughnut',
+            data: revenueData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '60%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            font: { size: 14 }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback,
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed !== null) {
+                                    label += new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'XOF', minimumFractionDigits: 0 }).format(context.parsed);
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const expensesData = {
+            labels: [
+                wrapText('Masse Salariale', 16),
+                wrapText('Petit-déjeuner', 16),
+                wrapText('Élec. Chambres', 16),
+                wrapText('Élec. Communs', 16),
+                wrapText('Blanchisserie', 16),
+                wrapText('Clim. Communs', 16),
+                wrapText('Logistique', 16),
+                wrapText('Internet & Télécoms', 16),
+                wrapText('Eau', 16),
+                wrapText('Élec. Cuisine', 16)
+            ],
+            datasets: [{
+                label: 'Coût Annuel (FCFA)',
+                data: [
+                    35520000,
+                    9855000,
+                    7227000,
+                    5148000,
+                    4380000,
+                    3960000,
+                    2493180,
+                    1440000,
+                    363756,
+                    704880
+                ],
+                backgroundColor: [
+                    chartColors.primary,
+                    chartColors.secondary,
+                    chartColors.tertiary,
+                    chartColors.quaternary,
+                    chartColors.primary,
+                    chartColors.secondary,
+                    chartColors.tertiary,
+                    chartColors.quaternary,
+                    chartColors.primary,
+                    chartColors.secondary
+                ],
+                borderColor: [
+                    chartColors.primary,
+                    chartColors.secondary,
+                    chartColors.tertiary,
+                    chartColors.quaternary,
+                    chartColors.primary,
+                    chartColors.secondary,
+                    chartColors.tertiary,
+                    chartColors.quaternary,
+                    chartColors.primary,
+                    chartColors.secondary
+                ],
+                borderWidth: 1,
+                borderRadius: 5,
+                barThickness: 25,
+            }]
+        };
+
+        new Chart(document.getElementById('expensesChart'), {
+            type: 'bar',
+            data: expensesData,
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return (value / 1000000) + 'M FCFA';
+                            }
+                        }
+                    },
+                    y: {
+                         grid: {
+                            display: false
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: { 
+                        callbacks: { 
+                            title: tooltipTitleCallback,
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.x !== null) {
+                                    label += new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'XOF', minimumFractionDigits: 0 }).format(context.parsed.x);
+                                }
+                                return label;
+                            }
+                        } 
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

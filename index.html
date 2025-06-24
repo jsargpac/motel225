@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motel225 - Accueil Investisseurs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            color: #001219;
+        }
+        .header-bg {
+            background-color: #001219;
+        }
+        .text-accent {
+            color: #e9d8a6;
+        }
+        .text-primary {
+            color: #005f73;
+        }
+        .text-secondary {
+            color: #0a9396;
+        }
+        .bg-card {
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+        }
+        .kpi-card {
+            background: linear-gradient(135deg, #005f73 0%, #003a47 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .kpi-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #e9d8a6;
+        }
+        .kpi-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            color: #ee9b00; /* Keeping the yellow from original infographic KPI for consistency */
+        }
+        .flowchart-node {
+            background-color: white;
+            border: 2px solid #0a9396;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .flowchart-arrow {
+            position: relative;
+            width: 100%;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .flowchart-arrow::after {
+            content: '▼';
+            font-size: 24px;
+            color: #005f73;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-bg text-white p-6 md:p-8 shadow-lg">
+        <nav class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <h1 class="text-3xl font-black text-accent mb-4 md:mb-0">Motel225</h1>
+            <ul class="flex space-x-6 md:space-x-8 text-lg font-semibold">
+                <li><a href="index.html" class="text-white hover:text-accent transition-colors duration-300">Accueil</a></li>
+                <li><a href="modele-economique.html" class="text-white hover:text-accent transition-colors duration-300">Modèle Économique</a></li>
+                <li><a href="couts-construction.html" class="text-white hover:text-accent transition-colors duration-300">Coûts de Construction</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="hero" class="text-center my-16">
+            <h2 class="text-4xl md:text-5xl font-black text-primary leading-tight mb-6">Investissez dans l'avenir de l'hôtellerie en Côte d'Ivoire</h2>
+            <p class="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto mb-10">Motel225 se positionne comme la chaîne de motels moderne et fonctionnelle répondant aux besoins croissants des voyageurs d'affaires dans les régions intérieures du pays.</p>
+            <a href="modele-economique.html" class="bg-secondary text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-primary transition-colors duration-300 shadow-lg">Découvrez Notre Business Model</a>
+        </section>
+
+        <section id="opportunity" class="my-12">
+            <h2 class="text-3xl font-bold text-center mb-4 text-primary">Saisir une opportunité de marché exceptionnelle</h2>
+            <p class="max-w-3xl mx-auto text-center text-lg mb-8">La Côte d'Ivoire connaît une croissance économique robuste, mais l'offre hôtelière en dehors d'Abidjan est polarisée. Motel225 se positionne sur un segment mal desservi mais crucial : les voyageurs d'affaires à la recherche de confort, de connectivité et d'un prix juste.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-5xl font-extrabold text-secondary">6,5%</div>
+                    <div class="mt-2 text-lg font-semibold">Croissance du PIB</div>
+                    <div class="text-sm text-gray-600">Projetée en 2024</div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                     <div class="text-5xl font-extrabold text-secondary">25 000 <span class="text-3xl">FCFA</span></div>
+                    <div class="mt-2 text-lg font-semibold">Prix Nuitée Cible</div>
+                     <div class="text-sm text-gray-600">Un positionnement compétitif</div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-5xl font-extrabold text-secondary">20</div>
+                    <div class="mt-2 text-lg font-semibold">Chambres par Motel</div>
+                     <div class="text-sm text-gray-600">Modulable et extensible</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="concept" class="my-12 bg-white p-8 rounded-lg shadow-lg">
+            <h2 class="text-3xl font-bold text-center mb-8 text-primary">La solution : le concept Motel225</h2>
+            <p class="max-w-3xl mx-auto text-center text-lg mb-10">Motel225 est plus qu'un simple hébergement. C'est un écosystème de services conçu pour la productivité et le confort du voyageur d'affaires moderne, avec des standards internationaux et une touche locale.</p>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
+                <div class="p-4"><div class="text-5xl">📶</div><div class="mt-2 font-semibold">Connectivité Fiable</div></div>
+                <div class="p-4"><div class="text-5xl">🛡️</div><div class="mt-2 font-semibold">Sécurité Renforcée</div></div>
+                <div class="p-4"><div class="text-5xl">💼</div><div class="mt-2 font-semibold">Espaces de Travail</div></div>
+                <div class="p-4"><div class="text-5xl">🛌</div><div class="mt-2 font-semibold">Confort Supérieur</div></div>
+                <div class="p-4 col-span-2 md:col-span-1 lg:col-span-1"><div class="text-5xl">☕</div><div class="mt-2 font-semibold">Restauration Flexible</div></div>
+            </div>
+        </section>
+        
+        <section id="finances-overview" class="my-16">
+            <h2 class="text-3xl font-bold text-center mb-8 text-primary">Analyse financière en un coup d'oeil</h2>
+            <p class="max-w-3xl mx-auto text-center text-lg mb-12">Chaque unité Motel225 est conçue pour être financièrement performante, démontrant un potentiel de rentabilité solide.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="kpi-card">
+                    <div class="kpi-value">60.6M</div>
+                    <div class="kpi-label">EBITDA cible</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-value">25.2M</div>
+                    <div class="kpi-label">Résultat Net cible, après amortissement et remboursement emprunt</div>
+                </div>
+                 <div class="kpi-card">
+                    <div class="kpi-value">47,4%</div>
+                    <div class="kpi-label">Marge EBITDA</div>
+                </div>
+            </div>
+            <p class="text-center mt-8 text-lg max-w-3xl mx-auto">Ces indicateurs clés attestent de l'efficacité opérationnelle et du potentiel de rendement attrayant pour chaque unité.</p>
+        </section>
+
+        <section id="investment-structure" class="my-16 bg-white p-8 rounded-lg shadow-lg">
+            <h2 class="text-3xl font-bold text-center mb-8 text-primary">Structure d'Investissement & Participation</h2>
+            <p class="max-w-3xl mx-auto text-center text-lg mb-12">Nous allons démarrer par la construction de deux motels, probablement à Daloa et Man (les villes restent soumises à une dernière validation).</p>
+            <p class="max-w-3xl mx-auto text-center text-lg mb-12">Nous proposons deux voies d'investissement flexibles pour s'aligner sur les objectifs de nos partenaires : un investissement direct dans un actif ou une participation dans la vision globale de la chaîne.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                <div class="border-2 border-secondary rounded-lg p-6 flex flex-col">
+                    <h3 class="text-2xl font-bold text-primary mb-4">Option 1 : Investir dans un Motel</h3>
+                    <div class="flowchart-node flex-grow">
+                        <p class="font-bold text-lg">Investisseur</p>
+                        <p class="text-xl font-black text-secondary">100M FCFA</p>
+                    </div>
+                    <div class="flowchart-arrow"></div>
+                    <div class="flowchart-node flex-grow">
+                        <p class="font-bold text-lg">Société du Motel (SPV)</p>
+                        <p class="font-semibold">Valorisation : 400M FCFA</p>
+                        <p class="mt-2">Vous obtenez : <strong class="text-[#ee9b00]">25% du capital</strong></p>
+                    </div>
+                     <p class="text-center mt-4 text-sm text-gray-600">Un investissement ciblé pour une participation directe à la rentabilité d'un établissement spécifique.</p>
+                </div>
+                
+                <div class="border-2 border-primary rounded-lg p-6 flex flex-col">
+                    <h3 class="text-2xl font-bold text-primary mb-4">Option 2 : Investir dans la Holding</h3>
+                    <div class="flowchart-node flex-grow">
+                        <p class="font-bold text-lg">Investisseur</p>
+                        <p class="text-xl font-black text-primary">118.5M FCFA</p>
+                    </div>
+                    <div class="flowchart-arrow"></div>
+                    <div class="flowchart-node flex-grow">
+                        <p class="font-bold text-lg">Holding Motel225</p>
+                         <p class="font-semibold">Valorisation : 790M FCFA</p>
+                         <p class="mt-2">Vous obtenez : <strong class="text-[#ee9b00]">15% du capital</strong></p>
+                    </div>
+                    <p class="text-center mt-4 text-sm text-gray-600">Participez à la croissance de toute la chaîne et bénéficiez des synergies et de l'expansion future sur plusieurs sites.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="header-bg text-white p-8 text-center mt-16">
+        <p class="text-lg">&copy; 2025 Motel225. Tous droits réservés.</p>
+    </footer>
+
+</body>
+</html>

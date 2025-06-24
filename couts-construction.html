@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coûts de Construction - Motel225</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- Palette Name: Brilliant Blues -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            color: #001219;
+        }
+        .header-bg {
+            background-color: #001219;
+        }
+        .text-accent {
+            color: #e9d8a6;
+        }
+        .text-primary {
+            color: #005f73;
+        }
+        .text-secondary {
+            color: #0a9396;
+        }
+        .bg-card {
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+        }
+        .kpi-card {
+            background: linear-gradient(135deg, #005f73 0%, #003a47 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        .kpi-value {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #e9d8a6;
+            line-height: 1.1;
+        }
+        .kpi-label {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            color: #94d2bd;
+        }
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 400px;
+            width: 100%;
+            max-width: 650px;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #005f73;
+        }
+        .section-subtitle {
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            font-size: 1.25rem;
+            color: #334155;
+            margin-bottom: 3.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-bg text-white p-6 md:p-8 shadow-lg">
+        <nav class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <h1 class="text-3xl font-black text-accent mb-4 md:mb-0">Motel225</h1>
+            <ul class="flex space-x-6 md:space-x-8 text-lg font-semibold">
+                <li><a href="index.html" class="text-white hover:text-accent transition-colors duration-300">Accueil</a></li>
+                <li><a href="modele-economique.html" class="text-white hover:text-accent transition-colors duration-300">Modèle Économique</a></li>
+                <li><a href="couts-construction.html" class="text-white hover:text-accent transition-colors duration-300">Coûts de Construction</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+        
+        <section id="total-cost" class="my-16">
+            <h2 class="section-title">Investissement total par motel</h2>
+            <p class="section-subtitle">Chaque motel est conçu avec un investissement initial optimisé de <strong>327 millions FCFA</strong>, garantissant des infrastructures modernes et fonctionnelles.</p>
+            <div class="grid grid-cols-1 place-items-center">
+                <div class="kpi-card w-full max-w-sm">
+                    <div class="kpi-value">327M</div>
+                    <div class="kpi-label">FCFA</div>
+                    <p class="text-sm mt-2 text-gray-300">Coût total de construction et d'équipement d'un motel de 20 chambres.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="cost-breakdown" class="my-16 bg-card p-8">
+            <h2 class="section-title">Répartition détaillée du coût de construction</h2>
+            <p class="section-subtitle">Chaque poste de dépense est stratégiquement alloué pour assurer la qualité, la fonctionnalité et la rentabilité du projet.</p>
+            <div class="chart-container mx-auto">
+                <canvas id="costChart"></canvas>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 text-sm text-gray-700 max-w-4xl mx-auto">
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <p><strong class="text-[#005f73]">Second Oeuvre (120M FCFA) :</strong> Comprend les finitions intérieures, les revêtements, la plomberie, l'électricité et les menuiseries.</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <p><strong class="text-[#0a9396]">Gros Oeuvre (104M FCFA) :</strong> Concerne la structure principale du bâtiment, les fondations, les murs porteurs et la toiture.</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <p><strong class="text-[#94d2bd]">Aménagement Chambres (40M FCFA) :</strong> Inclut l'équipement complet des 20 chambres (lits, TV, mini-bars, bureaux, climatiseurs, etc.).</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <p><strong class="text-[#e9d8a6]">Terrain (25M FCFA) :</strong> Coût d'acquisition du foncier pour l'implantation du motel.</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <p><strong class="text-[#ee9b00]">Aménagement Espaces Communs (20M FCFA) :</strong> Financement des espaces comme le lobby, le grand lounge, et les salles de réunion.</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <p><strong class="text-[#ca6702]">Groupe Électrogène (5M FCFA) :</strong> Essentiel pour garantir une alimentation électrique continue et fiable.</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <p><strong class="text-[#005f73]">Cuisine (4M FCFA) :</strong> Aménagement et équipement de la cuisine professionnelle pour les services de restauration.</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <p><strong class="text-[#0a9396]">Blanchisserie (3M FCFA) :</strong> Installation du matériel nécessaire à la gestion du linge de l'hôtel.</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <p><strong class="text-[#94d2bd]">Local Technique & Poubelle (3M FCFA) :</strong> Espaces dédiés aux équipements techniques et à la gestion des déchets.</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <p><strong class="text-[#e9d8a6]">Sécurité & Vidéosurveillance (3M FCFA) :</strong> Systèmes de sécurité et de surveillance pour la protection des biens et des personnes.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center py-12 border-t-2 border-[#e9d8a6] mt-16">
+            <h2 class="text-2xl font-bold text-center mb-4 text-[#005f73]">Un Investissement Structuré pour un Projet Durable</h2>
+            <p class="text-lg max-w-3xl mx-auto">Chaque franc CFA investi dans la construction d'un Motel225 est alloué stratégiquement pour créer des infrastructures de haute qualité, durables et conformes aux standards internationaux, assurant ainsi la valeur à long terme de l'actif.</p>
+        </footer>
+
+    </main>
+
+    <script>
+        function wrapText(str, maxWidth) {
+            if (typeof str !== 'string' || str.length <= maxWidth) {
+                return str;
+            }
+            const words = str.split(' ');
+            let lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                const word = words[i];
+                if ((currentLine + ' ' + word).length > maxWidth) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine += ' ' + word;
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+
+        const chartColors = {
+            primary: '#005f73',
+            secondary: '#0a9396',
+            tertiary: '#94d2bd',
+            quaternary: '#e9d8a6',
+            quinary: '#ee9b00',
+            senary: '#ca6702',
+            textPrimary: '#001219',
+            bgLight: '#f8f9fa'
+        };
+
+        const costData = {
+            labels: [
+                wrapText('Second Oeuvre', 16),
+                wrapText('Gros Oeuvre', 16),
+                wrapText('Aménagement Chambres', 16),
+                wrapText('Terrain', 16),
+                wrapText('Aménagement Espaces Communs', 16),
+                wrapText('Groupe Électrogène', 16),
+                wrapText('Cuisine', 16),
+                wrapText('Blanchisserie', 16),
+                wrapText('Local Technique & Poubelle', 16),
+                wrapText('Sécurité & Vidéosurveillance', 16)
+            ],
+            datasets: [{
+                data: [120000000, 104000000, 40000000, 25000000, 20000000, 5000000, 4000000, 3000000, 3000000, 3000000],
+                backgroundColor: [
+                    chartColors.primary,
+                    chartColors.secondary,
+                    chartColors.tertiary,
+                    chartColors.quaternary,
+                    chartColors.quinary,
+                    chartColors.senary,
+                    chartColors.primary, /* Re-using colors for visual variety */
+                    chartColors.secondary,
+                    chartColors.tertiary,
+                    chartColors.quaternary
+                ],
+                borderColor: '#ffffff',
+                borderWidth: 3,
+                hoverOffset: 4
+            }]
+        };
+
+        new Chart(document.getElementById('costChart'), {
+            type: 'doughnut',
+            data: costData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '60%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            font: { size: 14 }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback,
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed !== null) {
+                                    label += new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'XOF', minimumFractionDigits: 0 }).format(context.parsed);
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
